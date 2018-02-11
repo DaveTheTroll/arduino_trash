@@ -20,7 +20,9 @@ void setup()
 #endif
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
   pinMode(buttonPin, INPUT_PULLUP);
+#ifdef ARDUINO_AVR_UNO
   heatIndex = headIndexStart;
+#endif
 }
 
 void loop()
