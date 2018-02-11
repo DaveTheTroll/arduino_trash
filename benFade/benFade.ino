@@ -1,7 +1,8 @@
 #include "FastLED.h"
 
-#define NUM_LEDS 24
-#define DATA_PIN 11
+#define NUM_LEDS 1
+#define DATA_PIN 0
+#define SERIAL_LOGGING
 
 CRGB leds[NUM_LEDS];
 static uint8_t heatIndex = 0;
@@ -10,8 +11,9 @@ uint8_t headIndexStart = 90;
 
 void setup()
 {
+#ifdef SERIAL_LOGGING
   Serial.begin(9600);
-  Serial.write("Ben Fade");
+#endif
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
   pinMode(buttonPin, INPUT_PULLUP);
   heatIndex = headIndexStart;
@@ -41,7 +43,9 @@ void sunrise()
     if (heatIndex > 0)
     {
       heatIndex--;
+#ifdef SERIAL_LOGGING
       Serial.println(heatIndex);
+#endif
     }
   }
 }
