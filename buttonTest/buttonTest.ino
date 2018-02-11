@@ -12,7 +12,7 @@ void setup() {
 }
 
 void loop() {
-  if (digitalRead(buttonPin) != LOW)
+  if (digitalRead(BUTTON_PIN) != LOW)
   {
     leds[0].red = 0;
     leds[0].green = 0;
