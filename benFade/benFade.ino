@@ -2,7 +2,10 @@
 
 #define NUM_LEDS 1
 #define DATA_PIN 0
+
+#ifdef ARDUINO_AVR_UNO
 #define SERIAL_LOGGING
+#endif
 
 CRGB leds[NUM_LEDS];
 static uint8_t heatIndex = 0;
@@ -13,6 +16,7 @@ void setup()
 {
 #ifdef SERIAL_LOGGING
   Serial.begin(9600);
+  Serial.println("Serial Logging Enabled");
 #endif
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
   pinMode(buttonPin, INPUT_PULLUP);
