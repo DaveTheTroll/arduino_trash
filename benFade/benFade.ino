@@ -2,7 +2,6 @@
 
 #define NUM_LEDS 24
 #define DATA_PIN 11
-#define CLOCK_PIN 13
 
 CRGB leds[NUM_LEDS];
 static uint8_t heatIndex = 0;
@@ -15,7 +14,7 @@ void setup()
   Serial.write("Ben Fade");
   FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
   pinMode(buttonPin, INPUT_PULLUP);
-    heatIndex = headIndexStart;
+  heatIndex = headIndexStart;
 }
 
 void loop()
@@ -35,8 +34,7 @@ void sunrise()
   fill_solid(leds, NUM_LEDS, color);
   
   static const uint32_t sunriseLength = 20;  // seconds
-  static const uint32_t interval = (sunriseLength * 1000) / headIndexStart; // s
-  // 256 gradient steps
+  static const uint32_t interval = (sunriseLength * 1000) / headIndexStart;
 
   EVERY_N_MILLISECONDS(interval)
   {
